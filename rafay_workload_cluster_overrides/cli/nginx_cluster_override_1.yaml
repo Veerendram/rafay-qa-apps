@@ -1,0 +1,25 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: cli-override-1
+spec:
+  clusterSelector: rafay.dev/clusterName=veer-15x-feature-testing
+  resourceSelector: rafay.dev/name=cli-workload-override-git-1
+  type: ClusterOverrideTypeWorkload
+  overrideValues: |
+    replicaCount: 20
+    image:
+      registry: docker.io
+      repository: nginx
+      pullPolicy: Always
+      tag: "1.19.8"
+    service:
+      type: ClusterIP
+      port: 8080
+    readinessProbe:
+      enabled: false
+    livenessProbe:
+      enabled: false
+    ingress:
+      enable: true
+      hostname: cli-override-dbub-modified.run.stage.rafay-edge.net

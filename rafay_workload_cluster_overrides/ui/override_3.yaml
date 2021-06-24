@@ -1,0 +1,19 @@
+image:
+  registry: docker.io
+  repository: nginx
+  pullPolicy: Always
+  tag: latest
+service:
+  type: NodePort
+  port: 8080
+  nodePort:
+    http: http
+    https: https
+readinessProbe:
+    enabled: false
+livenessProbe:
+  enabled: false
+replicaCount: 4
+ingress:
+  enable: true
+  hostname: addon-overloaded-ing.run.stage.rafay-edge.net

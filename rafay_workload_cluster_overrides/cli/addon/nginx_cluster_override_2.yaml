@@ -1,0 +1,31 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: cli-addon-override-2
+spec:
+  clusterSelector: rafay.dev/clusterName=veer-15x-eks-cluster
+  resourceSelector: rafay.dev/name=cli-addon-override-git
+  type: ClusterOverrideTypeAddon
+  overrideValues: |
+    image:
+      registry: gcr.io/gcp-auto-provision
+      repository: bitnami-nginx
+      pullPolicy: Always
+      tag: 1.16.1-debian-10-r0
+    service:
+      type: NodePort
+      port: 8080
+      nodePort:
+        http: http
+        https: https
+    readinessProbe:
+      enabled: false
+    livenessProbe:
+     enabled: false
+    replicaCount: 20
+    podAnnotations:
+      rafay.dev/registry-rx28oml: veer-gcr
+      rafay.dev/logging: regression-es-ep
+    ingress:
+      enable: true
+      hostname: cli-override-dbub-modified.run.stage.rafay-edge.net

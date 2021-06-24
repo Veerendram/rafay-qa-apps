@@ -1,0 +1,29 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: cli-addon-override-3
+spec:
+  clusterSelector: override=true
+  resourceSelector: rafay.dev/name=cli-addon-override
+  type: ClusterOverrideTypeAddon
+  overrideValues: |
+    replicaCount: 1
+    image:
+      registry: docker.io
+      repository: nginx
+      pullPolicy: Always
+      tag: latest
+    service:
+      type: NodePort
+      port: 8080
+      nodePort:
+        http: http
+        https: https
+    readinessProbe:
+       enabled: false
+    livenessProbe:
+      enabled: false
+    replicaCount: 4
+    ingress:
+     enable: true
+     hostname: cli-overloaded-dhub.run.stage.rafay-edge.net

@@ -1,0 +1,20 @@
+image:
+  registry: gcr.io/gcp-auto-provision
+  repository: bitnami-nginx
+  pullPolicy: Always
+  tag: 1.16.1-debian-10-r0
+service:
+  type: ClusterIP
+  port: 8080
+readinessProbe:
+  enabled: false
+livenessProbe:
+  enabled: false
+replicaCount: 5
+podAnnotations:
+  rafay.dev/registry-rx28oml: veer-gcr
+#commonAnnotations:
+#  rafay.dev/registry-commonAnnotation-gcr: veer-gcr
+ingress:
+  enable: true
+  hostname: override-gcr.run.stage.rafay-edge.net
