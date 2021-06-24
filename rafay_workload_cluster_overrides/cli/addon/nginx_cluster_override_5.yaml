@@ -1,0 +1,9 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: cli-addon-override-5
+spec:
+  clusterSelector: override=true
+  resourceSelector: rafay.dev/name=cli-co-addon-upload-from-local
+  type: ClusterOverrideTypeAddon
+  valuesFile: /Users/veerendrakumar/Desktop/override_values.yaml
