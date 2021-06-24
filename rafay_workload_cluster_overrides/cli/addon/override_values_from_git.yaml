@@ -16,4 +16,4 @@ livenessProbe:
 replicaCount: 8
 ingress:
   enable: true
-  hostname: post-cli-overloaded-dhub.run.stage.rafay-edge.net
+  hostname: values-overide-from-git.run.stage.rafay-edge.net
