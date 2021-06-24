@@ -1,0 +1,19 @@
+image:
+  registry: docker.io
+  repository: nginx
+  pullPolicy: Always
+  tag: latest
+service:
+  type: NodePort
+  port: 8081
+  nodePort:
+    http: http
+    https: https
+readinessProbe:
+    enabled: false
+livenessProbe:
+    enabled: false
+replicaCount: 8
+ingress:
+  enable: true
+  hostname: values-overide-from-git.run.stage.rafay-edge.net

@@ -1,0 +1,9 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: workload-addon-override-uploaded-from-local
+spec:
+  clusterSelector: override=true
+  resourceSelector: rafay.dev/name=wl-co-addon-upload-from-local
+  type: ClusterOverrideTypeWorkload
+  valuesFile: /Users/veerendrakumar/Desktop/override_values.yaml

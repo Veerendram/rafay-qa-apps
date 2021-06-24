@@ -1,0 +1,16 @@
+kind: ClusterOverride
+apiVersion: config.rafay.dev/v2
+metadata:
+  name: workload-addon-override-from-git
+spec:
+  clusterSelector: override=true
+  resourceSelector: rafay.dev/name=wli-co-addon-upload-from-git
+  type: ClusterOverrideTypeWorkload
+  valuesRepoRef: veer-public-git
+  valuesRepoArtifactMeta:
+    git:
+      revision: main
+      repoArtifactFiles:
+      - name: override_values_from_git
+        relPath: rafay_workload_cluster_overrides/cli/addon/override_values_from_git_1.yaml
+        fileType: K8sYAMLFile
